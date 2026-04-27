@@ -2,8 +2,13 @@
 
 class StringUtils {
   static boolean containsChar(String str, char a) {
-   int index = str.indexOf(a);
-   return  index == -1;
+    int length = str.length();
+    for(int i = 0; i< length; i++) {
+      if(str.charAt(i) == a) {
+        return true;
+      }
+    }
+    return false;
   }
 
   static String reverse(String str) {
@@ -22,11 +27,9 @@ class StringUtils {
 
     for(int i = 0; i<length; i++) {
       char currentCharacter = str.charAt(i);
-      if(currentCharacter == charToReplace) {
-        newString += replaceChar;
-      } else {
-         newString+=currentCharacter;
-      }
+      newString += currentCharacter == charToReplace
+        ? replaceChar
+        :currentCharacter;
     }
     return newString;
     
